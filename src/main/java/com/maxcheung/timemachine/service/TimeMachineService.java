@@ -1,5 +1,6 @@
 package com.maxcheung.timemachine.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public interface TimeMachineService {
@@ -9,5 +10,7 @@ public interface TimeMachineService {
 	void useFixedClockAt(LocalDateTime date);
 
 	void useSystemDefaultZoneClock();
+
+	LocalDate getToday();
 
 }

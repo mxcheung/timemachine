@@ -35,7 +35,7 @@ public class TimeMachineController {
 	@RequestMapping(value = "/getToday", method = RequestMethod.GET)
 	public @ResponseBody LocalDate getToday() {
 		LOG.info(" getToday");
-		return timeMachineService.now().toLocalDate();
+		return timeMachineService.getToday();
 	}
 
 	@RequestMapping(value = "/useFixedClockAt", method = RequestMethod.PUT)
