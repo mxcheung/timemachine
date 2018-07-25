@@ -1,5 +1,6 @@
 package com.maxcheung.timemachine.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.slf4j.Logger;
@@ -29,6 +30,12 @@ public class TimeMachineController {
 	public @ResponseBody LocalDateTime getNow() {
 		LOG.info(" getNow");
 		return timeMachineService.now();
+	}
+
+	@RequestMapping(value = "/getToday", method = RequestMethod.GET)
+	public @ResponseBody LocalDate getToday() {
+		LOG.info(" getToday");
+		return timeMachineService.now().toLocalDate();
 	}
 
 	@RequestMapping(value = "/useFixedClockAt", method = RequestMethod.PUT)
