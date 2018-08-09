@@ -14,6 +14,7 @@ public class TimeMachineTest {
 
     private LocalDateTime now;
     private  LocalDateTime twoWeeksAgo;
+    private TimeMachineService timeMachineService = new TimeMachineServiceImpl();
 
 	@Before
 	public void setup() {
@@ -23,7 +24,6 @@ public class TimeMachineTest {
 
 	@Test
 	public void testUseFixedClockAt() throws InterruptedException {
-	    TimeMachineService timeMachineService = new TimeMachineServiceImpl();
 	    timeMachineService.useFixedClockAt(twoWeeksAgo);
 	    assertEquals(twoWeeksAgo.toLocalDate(), timeMachineService.getToday());
 	    TimeUnit.MILLISECONDS.sleep(10);
@@ -35,7 +35,6 @@ public class TimeMachineTest {
 	
 	@Test
 	public void testUseRunningClockAt() throws InterruptedException {
-	    TimeMachineService timeMachineService = new TimeMachineServiceImpl();
 	    timeMachineService.useRunningClockAt(twoWeeksAgo);
 	    TimeUnit.MILLISECONDS.sleep(10);
 	    assertNotEquals(0, timeMachineService.now().until( twoWeeksAgo, ChronoUnit.MILLIS));
