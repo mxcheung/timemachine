@@ -9,6 +9,8 @@ public interface TimeMachineService {
 
 	void useFixedClockAt(LocalDateTime date);
 
+	void useRunningClockAt(LocalDateTime date);
+
 	void useSystemDefaultZoneClock();
 
 	LocalDate getToday();

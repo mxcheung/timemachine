@@ -1,6 +1,7 @@
 package com.maxcheung.timemachine.service;
 
 import java.time.Clock;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -29,6 +30,13 @@ public class TimeMachineServiceImpl implements TimeMachineService {
 	public  void useFixedClockAt(LocalDateTime date) {
 		clock = Clock.fixed(date.atZone(zoneId).toInstant(), zoneId);
 	}
+
+	@Override
+	public void useRunningClockAt(LocalDateTime date) {
+	    Duration offsetDuration = Duration.between(now(), date);
+		clock = Clock.offset(Clock.systemDefaultZone(), offsetDuration);
+	}
+
 
 	@Override
 	public  void useSystemDefaultZoneClock() {

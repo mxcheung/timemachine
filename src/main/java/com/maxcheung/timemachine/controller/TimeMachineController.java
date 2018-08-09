@@ -45,6 +45,14 @@ public class TimeMachineController {
 		timeMachineService.useFixedClockAt(clockDate);
 	}
 
+	@RequestMapping(value = "/useRunningClockAt", method = RequestMethod.PUT)
+	public @ResponseBody void useRunningClockAt(@RequestParam("clockDate") 
+											@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime clockDate) {
+		LOG.info(" useRunningClockAt");
+		timeMachineService.useRunningClockAt(clockDate);
+	}
+
+	
 	@RequestMapping(value = "/useSystemDefaultZoneClock", method = RequestMethod.PUT)
 	public @ResponseBody void useSystemDefaultZoneClock() {
 		//2000-10-31T01:30:00.000-05:00
